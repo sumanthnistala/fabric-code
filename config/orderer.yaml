@@ -1,0 +1,26 @@
+# orderer.yaml
+# Configuration for Hyperledger Fabric Orderer
+
+general:
+
+  # TLS settings
+  tls:
+    enabled: true
+    privatekey: /etc/hyperledger/fabric/tls/server.key
+    certificate: /etc/hyperledger/fabric/tls/server.crt
+
+  # cluster:
+  # # Enable TLS for cluster communication
+  #   clientCertificate:
+  #   clientPrivateKey:
+  #   listenaddress:
+  #   serverCertificate:
+  #   serverPrivateKey:
+
+  # BCCSP configuration
+  bccsp:
+    default: SW  # Use software BCCSP
+    sw:
+      hash: SHA2  # Hashing algorithm
+      security: 256  # Security level
+      keystore: /etc/hyperledger/fabric/bccsp/keystore  # Path to keystore

@@ -1,0 +1,58 @@
+# core.yaml
+# Configuration for Hyperledger Fabric Peer
+
+# General configuration
+peer:
+  # The default peer configuration
+  id: peer0.org1.example.com
+  localMspId: Org1MSP
+  mspConfigPath: /etc/hyperledger/fabric/msp
+  tls:
+    enabled: true
+    cert:
+      file: /etc/hyperledger/fabric/tls/server.crt
+    key:
+      file: /etc/hyperledger/fabric/tls/server.key
+    rootCert:
+      file: /etc/hyperledger/fabric/tls/ca.crt
+
+  # BCCSP configuration
+  bccsp:
+    # The default BCCSP to use
+    default: SW
+    # List of supported BCCSPs
+    sw:
+      # Location of the keystore
+      keystore: /etc/hyperledger/fabric/bccsp/keystore
+      # Hash algorithm
+      hash: SHA2
+      # The size of the key
+      security: 256
+  
+  # Configuration for peer0
+  peer0:
+    id: peer0.org1.example.com
+    localMspId: Org1MSP
+    mspConfigPath: /etc/hyperledger/fabric/msp
+    grpc:
+      listenAddress: 0.0.0.0:7051
+
+  # Configuration for peer1
+  peer1:
+    id: peer1.org1.example.com
+    localMspId: Org1MSP
+    mspConfigPath: /etc/hyperledger/fabric/msp
+    grpc:
+      listenAddress: 0.0.0.0:8051
+
+# Chaincode settings
+chaincode:
+  pull: false
+  logging:
+    level: info
+  externalBuilders: []
+  installTimeout: 300s
+
+vm:
+    endpoint: unix:///var/run/docker.sock
+

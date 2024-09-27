@@ -1,0 +1,36 @@
+OrdererOrgs:
+  - Name: OrdererOrg
+    Domain: example.com
+    EnableTLS: true
+    Specs:
+      - Hostname: orderer1
+        SANS:
+          - "127.0.0.1"
+      - Hostname: orderer2
+        SANS:
+          - "127.0.0.1"
+      - Hostname: orderer3
+        SANS:
+          - "127.0.0.1"
+
+PeerOrgs:
+  - Name: Org1
+    Domain: org1.example.com
+    EnableNodeOUs: true
+    EnableTLS: true
+    Template:
+      Count: 2  # Number of peers in Org1
+      SANS:
+        - "127.0.0.1"
+    Users:
+      Count: 1  # Number of users for Org1
+  - Name: Org2
+    Domain: org2.example.com
+    EnableNodeOUs: true
+    EnableTLS: true
+    Template:
+      Count: 2  # Number of peers in Org2
+      SANS:
+        - "127.0.0.1"
+    Users:
+      Count: 1  # Number of users for Org2

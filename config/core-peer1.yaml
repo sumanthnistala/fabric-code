@@ -1,0 +1,43 @@
+# Peer1-specific core.yaml
+peer:
+  id: peer1.org1.example.com
+  networkId: dev
+  address: 0.0.0.0:8051
+
+  # Membership Service Provider (MSP) configuration
+  localMspId: Org1MSP
+  mspConfigPath: /etc/hyperledger/fabric/msp
+
+  # Gossip configuration
+  gossip:
+    useLeaderElection: true
+    orgLeader: false
+    bootstrap: peer0.org1.example.com:7051
+    endpoint: peer1.org1.example.com:8051
+
+  # TLS Configuration
+  tls:
+    enabled: true
+    cert:
+      file: /etc/hyperledger/fabric/tls/server.crt
+    key:
+      file: /etc/hyperledger/fabric/tls/server.key
+    rootcert:
+      file: /etc/hyperledger/fabric/tls/ca.crt
+
+# Blockchain Cryptographic Service Provider (BCCSP) configuration
+bccsp:
+  default: SW
+  sw:
+    hash: SHA2
+    security: 256
+    filekeystore:
+      keystore: /etc/hyperledger/fabric/msp/keystore
+
+# Chaincode settings
+chaincode:
+  pull: false
+  logging:
+    level: info
+  externalBuilders: []
+  installTimeout: 300s
